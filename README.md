@@ -1,97 +1,150 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# FCM Mobile App
 
-# Getting Started
+This is a React Native project that implements Firebase Cloud Messaging (FCM) for push notifications, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Getting Started
 
-## Step 1: Start Metro
+> **Note**: Make sure you have completed the [React Native Environment Setup](https://reactnative.dev/docs/set-up-your-environment) before proceeding.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Prerequisites
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Node.js and npm/yarn
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+- JDK 11 or newer
+- Ruby and CocoaPods (for iOS)
 
-```sh
-# Using npm
-npm start
+## Installation
 
-# OR using Yarn
-yarn start
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Adrian-Wanjau/FCM-Mobile-App.git
 ```
 
-## Step 2: Build and run your app
+2. Navigate to the project directory:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+cd FCM-Mobile-App
 ```
 
-### iOS
+3. Install dependencies:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+```bash
+npm install
+```
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+or
 
-```sh
+```bash
+yarn install
+```
+
+4. For iOS, install CocoaPods dependencies:
+
+```bash
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Firebase Setup
 
-```sh
-# Using npm
+This project uses Firebase Cloud Messaging for push notifications. To set up your own Firebase project:
+
+1. Create a project in [Firebase Console](https://console.firebase.google.com/)
+2. Add Android and/or iOS apps to your Firebase project
+3. Download and add the configuration files:
+   - For Android: `google-services.json` to the `android/app/` directory
+   - For iOS: `GoogleService-Info.plist` to the iOS app using Xcode
+
+## Running the App
+
+### Start Metro Server
+
+```bash
+npm start
+```
+
+or
+
+```bash
+yarn start
+```
+
+### Run on Android
+
+```bash
+npm run android
+```
+
+or
+
+```bash
+yarn android
+```
+
+### Run on iOS
+
+```bash
 npm run ios
+```
 
-# OR using Yarn
+or
+
+```bash
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Development
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Push Notification Testing
 
-## Step 3: Modify your app
+After setting up Firebase, you can test push notifications by:
 
-Now that you have successfully run the app, let's make changes!
+1. Using the Firebase Console to send test messages
+2. Implementing a custom backend to send notifications via FCM API
+3. Using the Firebase Admin SDK in a test script
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Modifying the App
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Open `App.tsx` in your text editor to make changes. The app will automatically update thanks to Fast Refresh.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+To force reload:
+- **Android**: Press <kbd>R</kbd> twice or use the Dev Menu (<kbd>Ctrl</kbd>+<kbd>M</kbd> or <kbd>Cmd</kbd>+<kbd>M</kbd>)
+- **iOS**: Press <kbd>R</kbd> in the iOS Simulator
 
-## Congratulations! :tada:
+## Building for Production
 
-You've successfully run and modified your React Native App. :partying_face:
+### Android
 
-### Now what?
+To create a release build for Android:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```bash
+cd android
+./gradlew assembleRelease
+```
 
-# Troubleshooting
+The APK will be available at `android/app/build/outputs/apk/release/app-release.apk`
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### iOS
 
-# Learn More
+Build your iOS app through Xcode for distribution.
 
-To learn more about React Native, take a look at the following resources:
+## Troubleshooting
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+If you encounter issues:
+
+- Ensure your environment is properly set up according to the [React Native documentation](https://reactnative.dev/docs/environment-setup)
+- Check that Firebase is correctly configured
+- For Android build issues, verify your JDK version and JAVA_HOME environment variable
+- For iOS, ensure CocoaPods is properly installed and dependencies are up to date
+
+## Learn More
+
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
+- [React Native Firebase](https://rnfirebase.io/)
+
+## License
+
+This project is licensed under the MIT License.
